@@ -1,0 +1,143 @@
+{# ------------------------------------------------------- #}
+{# INDIVIDUAL VIEW FOR EACH PERSON                         #}
+{# ------------------------------------------------------- #}
+
+{% extends "templates/partials/base.html" %}
+{% block title %}{% parent %} / The Scene / People / {{ item.name }}{% endblock %}
+
+{# meta data #}
+{% block og_title %}{{ item.name }}{% endblock %}
+{% block og_type %}profile{% endblock %}
+{% block og_url %}{% parent %}{{ getCurrentUrl() }}{% endblock %}
+{% block og_image %}{{ item.headshot|imageCrop(1360, 1360) }}{% endblock %}
+{% block og_description %}{{ item.biography|striptags|slice(0, 140) }}...{% endblock %}
+
+{% block content %}{% spaceless %}
+
+  &lt;article class="scene--single __person">
+    &lt;header class="scene--single_masthead">
+      &lt;h1 class="pill">&lt;a href="{{ url('scene') }}">The Scene&lt;/a>&lt;/h1>
+      &lt;h1 class="pill __sub">&lt;a href="{{ url('people') }}">People&lt;/a>&lt;/h1>
+      &lt;h1 class="pill ___sub">{{ item.name }}&lt;/h1>
+    &lt;/header>
+
+    &lt;section class="scene--single_hero">
+      &lt;a href="{{ item.headshot.url }}" rel="lightbox" data-lightbox="{{ item.headshot|imageSize(1360, 1360) }}" title="">
+        &lt;figure>
+          &lt;picture>
+            {% set srcset = item.headshot|imageSize(300, 300) + ", " +  item.headshot|imageSize(600, 600) + " 2x" %}
+            &lt;source srcset="{{ srcset }}" media="(min-width: 40em)">
+            &lt;img src="{{ item.headshot|imageSize(400, 400) }}" alt="{{ item.name }}">
+          &lt;/picture>
+          {% if item.headshot_credit %}
+          &lt;figcaption>{{ item.headshot_credit }}&lt;/figcaption>
+          {% endif %}
+        &lt;/figure>
+      &lt;/a>
+
+      &lt;div class="single--scene_meta">
+        &lt;h3>{{ item.discipline }}&lt;/h3>
+
+        {# social media links #}
+        {% if item.social_media|size !== 0 %}
+        &lt;nav class="nav--share">
+          {% if item.website_url %}
+          &lt;a href="{{ item.website_url }}" class="social--web pill" target="_blank">&lt;i class="icon-web">&lt;/i>Website&lt;/a>
+          {% endif %}
+
+          {% for row in item.social_media %}
+          &lt;a href="{{ row.url }}" class="pill social--{{ row.platform|lower }}" target="_blank">&lt;i class="icon-{{ row.platform|lower }}">&lt;/i>{{ row.platform }}&lt;/a>
+          {% endfor %}
+        &lt;/nav>
+        {% endif %}
+
+        {# more info
+        {% if item.more_info|size !== 0 %}
+          &lt;ul class="nav--links">
+          {% for row in item.more_info %}
+            &lt;li>
+              &lt;a href="{{ row.value }}">{{ row.label }}&lt;/a>
+            &lt;/li>
+          {% endfor %}
+          &lt;/ul>
+        {% endif %}
+        #}
+      &lt;/div>
+    &lt;/section>
+
+    &lt;section class="scene--single_bio">
+      {{ item.biography|markdown }}
+    &lt;/section>
+
+  {# Related Content #}
+    {% if item.related_articles|size !== 0 || item.related_videos|size !== 0 %}
+    {% set relitems = merge(item.related_articles, item.related_videos) %}
+    {% set relitems = relitems|sort('publish_date', true) %}
+    &lt;section class="scene--single_related">
+      &lt;h2 class="pill">Schmopera says...&lt;/h2>
+      &lt;ul class="post--list __mini">
+        {% for relation in relitems %}
+        &lt;li>
+          &lt;a href="{{ url(relation) }}" class="post--list-title">
+            {% set srcset = relation.primary_image|imageCrop(100, 100) + ", " +  relation.primary_image|imageCrop(200, 200) + " 2x" %}
+            &lt;picture>
+              &lt;source srcset="{{ srcset }}" media="(min-width: 40em)">
+              &lt;img src="{{ relation.primary_image|imageCrop(100, 100) }}" alt="{{ relation.name }}">
+            &lt;/picture>
+
+            &lt;h1>{{ relation.name }}&lt;/h1>
+
+            &lt;p class="post--list-desc">{{ relation.short_description }}&lt;/p>
+
+            {% if relation.youtube_url %}
+              &lt;span class="btn post--button">Watch Video&lt;/span>
+            {% else %}
+              &lt;span class="btn post--button">Read More&lt;/span>
+            {% endif %}
+          &lt;/a>
+        &lt;/li>
+        {% endfor %}
+      &lt;/ul>
+    &lt;/section>
+    {% endif %}
+
+  {# People and Companies - The Scene #}
+    {% if item.related_companies|size !== 0 %}
+    &lt;section class="scene--single_companies">
+      &lt;h2 class="pill">Related Companies&lt;/h2>
+      &lt;nav class="scene--list __micro __full">
+        &lt;ul>
+        {% for relation in item.related_companies %}
+          &lt;li>&lt;a href="{{ url(relation) }}">&lt;img src="{{ relation.photo|imageCrop(200, 200) }}" alt="Logo">&lt;span>{{ relation.name }}&lt;/span>&lt;/a>&lt;/li>
+        {% endfor %}
+        &lt;/ul>
+      &lt;/nav>
+    &lt;/section>
+    {% endif %}
+
+  {# Thumbnail gallery #}
+    {% if item.gallery|size !== 0 %}
+    &lt;section class="post--single_gallery">
+      &lt;h2 class="pill">Gallery&lt;/h2>
+
+      &lt;ul class="gallery">
+      {% for image in item.gallery %}
+        &lt;li>
+          {# You can get the raw image url by accessing image.url #}
+          &lt;a href="{{ image.url }}" data-lightbox="{{ image|imageSize(1360, 1360) }}" rel="lightbox" title="{{ image.caption }}">
+            &lt;img src="{{ image|imageCrop(200, 200) }}" alt="{{ image.caption }}">
+          &lt;/a>
+        &lt;/li>
+      {% endfor %}
+      &lt;/ul>
+    &lt;/section>
+    {% endif %}
+
+    &lt;script>
+      document.addEventListener('DOMContentLoaded', function() { initGallery(); });
+    &lt;/script>
+  &lt;/article>
+
+
+{% endspaceless %}
+{% endblock %}

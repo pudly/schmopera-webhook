@@ -1,0 +1,18 @@
+{# ------------------------------------------------------- #}
+{# ONE OFF VIEW SCENE                                      #}
+{# ------------------------------------------------------- #}
+{% extends "templates/partials/base.html" %}
+
+{% block title %}{% parent %} / {{ cms.scene.name }}{% endblock %}
+{% block content %}
+  <h1 class="pill">{{ cms.scene.name }}</h1>
+
+  <div class="disclaimer">
+    <h2>Disclaimer</h2>
+    <p>This section is still a work in progress. We're working super hard to get the new site shiny and spiffy, and appreciate your patience in the meantime.</p>
+  </div>
+  
+  <div class="post--single">
+    {{ cms.scene.body|markdown }}
+  </div>
+{% endblock %}

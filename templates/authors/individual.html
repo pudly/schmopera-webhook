@@ -1,0 +1,81 @@
+{# ------------------------------------------------------- #}
+{# INDIVIDUAL VIEW FOR EACH AUTHOR                         #}
+{# ------------------------------------------------------- #}
+
+{% extends "templates/partials/base.html" %}
+{% block title %}{% parent %} / Authors / {{ item.name }}{% endblock %}
+
+{% block content %}{% spaceless %}
+
+  <h1 class="pill"><a href="{{ url('authors') }}">Authors</a></h1>
+  <h1 class="pill __sub">{{ item.name }}</h1>
+
+  <div class="disclaimer">
+    <h2>Warning</h2>
+    <p>This section is still a work in progress. We're working super hard to get the new site shiny and spiffy, and appreciate your patience in the meantime.</p>
+    <p>Unfortunately, that means that this particular page is not working yet, check back soon!</p>
+  </div>
+
+<!--
+  <p><a href="{{ url('authors') }}">View a list of all authors</a></p>
+  <h1>{{ item.name }}</h1>
+  <ul>
+      <li>
+        <strong>Name: </strong>
+        {{ item.name }}
+      </li>
+      <li>
+        <strong>Create Date: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ item.create_date|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Last Updated: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ item.last_updated|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Publish Date: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ item.publish_date|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Full name: </strong>
+        {{ item.full_name.first }} {{ item.full_name.last }}
+      </li>
+      <li>
+        <strong>Email: </strong>
+        {{ item.email }}
+      </li>
+      <li>
+        <strong>Mugshot: </strong>
+        {# You can pull out a lot more information from the image property. Info here: #}
+        {# http://www.webhook.com/docs/widget-template-reference/#image #}
+        <img src="{{ item.mugshot|imageSize(200) }}" />
+      </li>
+      <li>
+        <strong>Author Bio: </strong>
+        {{ item.author_bio|safe }}
+      </li>
+      <li>
+        <strong>Website: </strong>
+        {{ item.website }}
+      </li>
+      <li>
+        <strong>Articles: </strong>
+        {# Relationship. Note that use the label you set for the relation, not the content-type name. #}
+        {% for relation in item.articles %}
+          {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
+          <a href="{{ url(relation) }}">{{ relation.name }}</a>{% if not loop.last %},{% endif %}
+        {% endfor %}
+      </li>
+      <li>
+        <strong>Preview URL: </strong>
+        {{ item.preview_url }}
+      </li>
+      <li>
+        <strong>Slug: </strong>
+        {{ item.slug }}
+      </li>
+  </ul>-->
+{% endspaceless %}{% endblock %}
