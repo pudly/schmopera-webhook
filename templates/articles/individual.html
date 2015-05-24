@@ -92,6 +92,30 @@
       </nav>
     </section>
 
+  {# Author details #}
+    <section class="post--single_authors">
+    {% for author in item.authors %}
+      <div class="post--single_author">
+        {% set srcset = author.photo|imageCrop(100, 100) + ", " +  author.photo|imageCrop(200, 200) + " 2x" %}
+        <picture>
+          <source srcset="{{ srcset }}" media="(min-width: 40em)">
+          <img src="{{ author.photo|imageCrop(60, 60) }}" alt="{{ author.name }}">
+        </picture>
+
+        <h2>{{ author.name }}</h2>
+
+        <div class="post--single_author-bio">
+          {{ author.short_bio|markdown }}
+        </div>
+
+        <nav class="post--single_author-meta">
+          {# set authorposts = author.related_articles|size + author.related_videos|size #}
+          <a href="{{ url(author) }}">More info</a>
+        </nav>
+      </div>
+    {% endfor %}
+    </section>
+
   {# Prev/Next Posts #}
     <nav class="post--single_jump">
     {% set prev = prevItem(item, 'publish_date', true) %}
