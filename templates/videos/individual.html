@@ -131,6 +131,46 @@
       </nav>
     </section>
 
+  {# Prev/Next Posts #}
+    <nav class="post--single_jump">
+    {% set prev = prevItem(item, 'publish_date', true) %}
+    {% set next = nextItem(item, 'publish_date', true) %}
+    {% if prev %}
+      <a href="{{ url(prev) }}" title="Newer" class="post--single_jump-prev">
+
+        <i class="icon-arrow-left"></i>
+
+        {% set srcset = prev.primary_image|imageCrop(100, 100) + ", " +  prev.primary_image|imageCrop(200, 200) + " 2x" %}
+        <picture>
+          <source srcset="{{ srcset }}" media="(min-width: 40em)">
+          <img src="{{ prev.primary_image|imageCrop(60, 60) }}" alt="{{ prev.name }}">
+        </picture>
+
+        <span>{{ prev.name }}</span>
+
+      </a>
+    {% endif %}
+    {% if next %}
+      {% if prev %}
+      <a href="{{ url(next) }}" title="Older" class="post--single_jump-next">
+      {% else %}
+      <a href="{{ url(next) }}" title="Older" class="post--single_jump-next __single">
+      {% endif %}
+
+        <i class="icon-arrow-right"></i>
+
+        {% set srcset = next.primary_image|imageCrop(100, 100) + ", " +  next.primary_image|imageCrop(200, 200) + " 2x" %}
+        <picture>
+          <source srcset="{{ srcset }}" media="(min-width: 40em)">
+          <img src="{{ next.primary_image|imageCrop(60, 60) }}" alt="{{ next.name }}">
+        </picture>
+
+        <span>{{ next.name }}</span>
+
+      </a>
+    {% endif %}
+    </nav>
+
   {# People and Companies - The Scene #}
     {% if item.people|size !== 0 || item.companies|size !== 0 %}
     <section class="post--single_scene">
@@ -175,6 +215,7 @@
       <ul>
       {% for row in item.box_office %}
         <li>
+          <section>
           {% if row.logo %}
             {% set srcset = row.logo|imageCrop(150, 150) + ", " +  row.logo|imageCrop(300, 300) + " 2x" %}
             <picture>
@@ -183,25 +224,25 @@
             </picture>
           {% endif %}
 
-          <div>
-            <h3>{{ row.title }}</h3>
+            <div>
+              <h3>{{ row.title }}</h3>
 
-            {% if row.description %}
-              <div class="post--single_boxoffice-desc">{{ row.description|markdown }}</p>
-            {% endif %}
-
-            {% if row.more_info_url || row.tickets_url %}
-              <nav class="post--single_boxoffice-nav">
-                {% if row.more_info_url %}
-                <a href="{{ row.more_info_url }}" target=_blank class="btn">More information</a>
-                {% endif %}
-                {% if row.tickets_url %}
-                <a href="{{ row.tickets_url }}" target=_blank class="btn">Buy Tickets</a>
-                {% endif %}
-              </nav>
-            {% endif %}
-          </div>
-
+              {% if row.description %}
+                <div class="post--single_boxoffice-desc">{{ row.description|markdown }}</div>
+              {% endif %}
+            </div>
+          </section>
+          <footer>
+          {% if row.more_info_url || row.tickets_url %}
+            <nav class="post--single_boxoffice-nav">
+              {% if row.more_info_url %}
+              <a href="{{ row.more_info_url }}" target=_blank class="btn">More information</a>
+              {% endif %}
+              {% if row.tickets_url %}
+              <a href="{{ row.tickets_url }}" target=_blank class="btn">Buy Tickets</a>
+              {% endif %}
+            </nav>
+          {% endif %}
           {% if row.starts_on %}
             <p class="post--single_boxoffice-duration">
               {% if row.ends_on %}
@@ -211,6 +252,7 @@
               {% endif %}
             </p>
           {% endif %}
+          </footer>
         </li>
       {% endfor %}
       </ul>
@@ -225,46 +267,6 @@
       <script type="text/javascript"> var disqus_shortname = 'schmopera'; (function() { var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })();</script>
       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </section>
-
-  {# Prev/Next Posts #}
-    <nav class="post--single_jump">
-    {% set prev = prevItem(item, 'publish_date', true) %}
-    {% set next = nextItem(item, 'publish_date', true) %}
-    {% if prev %}
-      <a href="{{ url(prev) }}" title="Newer" class="post--single_jump-prev">
-
-        <i class="icon-arrow-left"></i>
-
-        {% set srcset = prev.primary_image|imageCrop(100, 100) + ", " +  prev.primary_image|imageCrop(200, 200) + " 2x" %}
-        <picture>
-          <source srcset="{{ srcset }}" media="(min-width: 40em)">
-          <img src="{{ prev.primary_image|imageCrop(60, 60) }}" alt="{{ prev.name }}">
-        </picture>
-
-        <span>{{ prev.name }}</span>
-
-      </a>
-    {% endif %}
-    {% if next %}
-      {% if prev %}
-      <a href="{{ url(next) }}" title="Older" class="post--single_jump-next">
-      {% else %}
-      <a href="{{ url(next) }}" title="Older" class="post--single_jump-next __single">
-      {% endif %}
-
-        <i class="icon-arrow-right"></i>
-
-        {% set srcset = next.primary_image|imageCrop(100, 100) + ", " +  next.primary_image|imageCrop(200, 200) + " 2x" %}
-        <picture>
-          <source srcset="{{ srcset }}" media="(min-width: 40em)">
-          <img src="{{ next.primary_image|imageCrop(60, 60) }}" alt="{{ next.name }}">
-        </picture>
-
-        <span>{{ next.name }}</span>
-
-      </a>
-    {% endif %}
-    </nav>
 
   </div>
 
