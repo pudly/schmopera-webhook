@@ -231,7 +231,7 @@
     {% set prev = prevItem(item, 'publish_date', true) %}
     {% set next = nextItem(item, 'publish_date', true) %}
     {% if prev %}
-      <a href="{{ url(prev) }}" title="Newer Posts" class="post--single_jump-prev">
+      <a href="{{ url(prev) }}" title="Newer" class="post--single_jump-prev">
 
         <i class="icon-arrow-left"></i>
 
@@ -246,7 +246,11 @@
       </a>
     {% endif %}
     {% if next %}
-      <a href="{{ url(next) }}" title="Older Posts" class="post--single_jump-next">
+      {% if prev %}
+      <a href="{{ url(next) }}" title="Older" class="post--single_jump-next">
+      {% else %}
+      <a href="{{ url(next) }}" title="Older" class="post--single_jump-next __single">
+      {% endif %}
 
         <i class="icon-arrow-right"></i>
 

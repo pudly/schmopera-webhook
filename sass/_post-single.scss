@@ -584,7 +584,6 @@
 ----------------------------------------------------- */
 .post--single_jump {
   margin-bottom: 20px;
-  overflow: hidden;
 
   a {
     position: relative;
@@ -659,6 +658,7 @@
 
       > span {
         margin-left: 25px;
+        padding-right: 10px;
       }
 
       > i {
@@ -681,8 +681,6 @@
     }
 
     &.post--single_jump-next {
-      float: right;
-
       &:before {
         right: 25px;
       }
@@ -690,6 +688,7 @@
       > span {
         margin-right: 25px;
         text-align: right;
+        padding-left: 10px;
       }
 
       > i {
@@ -708,6 +707,10 @@
         &:before {
           right: 70px;
         }
+      }
+
+      &.__single {
+        width: 100%;
       }
     }
 

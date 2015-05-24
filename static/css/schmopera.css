@@ -1747,8 +1747,7 @@ footer {
     previous and next post jumper
 ----------------------------------------------------- */
 .post--single_jump {
-  margin-bottom: 20px;
-  overflow: hidden; }
+  margin-bottom: 20px; }
   .post--single_jump a {
     position: relative;
     display: inline-block;
@@ -1794,7 +1793,8 @@ footer {
     .post--single_jump a.post--single_jump-prev:before {
       left: 25px; }
     .post--single_jump a.post--single_jump-prev > span {
-      margin-left: 25px; }
+      margin-left: 25px;
+      padding-right: 10px; }
     .post--single_jump a.post--single_jump-prev > i {
       float: left; }
     .post--single_jump a.post--single_jump-prev:hover > span {
@@ -1803,21 +1803,22 @@ footer {
       float: left; }
     .post--single_jump a.post--single_jump-prev:hover:before {
       left: 70px; }
-    .post--single_jump a.post--single_jump-next {
+    .post--single_jump a.post--single_jump-next:before {
+      right: 25px; }
+    .post--single_jump a.post--single_jump-next > span {
+      margin-right: 25px;
+      text-align: right;
+      padding-left: 10px; }
+    .post--single_jump a.post--single_jump-next > i {
       float: right; }
-      .post--single_jump a.post--single_jump-next:before {
-        right: 25px; }
-      .post--single_jump a.post--single_jump-next > span {
-        margin-right: 25px;
-        text-align: right; }
-      .post--single_jump a.post--single_jump-next > i {
-        float: right; }
-      .post--single_jump a.post--single_jump-next:hover > span {
-        margin-right: 70px; }
-      .post--single_jump a.post--single_jump-next:hover picture {
-        float: right; }
-      .post--single_jump a.post--single_jump-next:hover:before {
-        right: 70px; }
+    .post--single_jump a.post--single_jump-next:hover > span {
+      margin-right: 70px; }
+    .post--single_jump a.post--single_jump-next:hover picture {
+      float: right; }
+    .post--single_jump a.post--single_jump-next:hover:before {
+      right: 70px; }
+    .post--single_jump a.post--single_jump-next.__single {
+      width: 100%; }
     @media only screen and (min-width: 40em) {
       .post--single_jump a {
         margin-bottom: 40px; } }
