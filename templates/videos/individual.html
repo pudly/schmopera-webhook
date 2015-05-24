@@ -226,12 +226,14 @@
       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </section>
 
-  {# Prev/Next Videos #}
+  {# Prev/Next Posts #}
     <nav class="post--single_jump">
     {% set prev = prevItem(item, 'publish_date', true) %}
     {% set next = nextItem(item, 'publish_date', true) %}
     {% if prev %}
-      <a href="{{ url(prev) }}" title="Previous Video" class="post--single_jump_prev">
+      <a href="{{ url(prev) }}" title="Newer Posts" class="post--single_jump-prev">
+
+        <i class="icon-arrow-left"></i>
 
         {% set srcset = prev.primary_image|imageCrop(100, 100) + ", " +  prev.primary_image|imageCrop(200, 200) + " 2x" %}
         <picture>
@@ -244,7 +246,9 @@
       </a>
     {% endif %}
     {% if next %}
-      <a href="{{ url(next) }}" title="Next Video" class="post--single_jump_next">
+      <a href="{{ url(next) }}" title="Older Posts" class="post--single_jump-next">
+
+        <i class="icon-arrow-right"></i>
 
         {% set srcset = next.primary_image|imageCrop(100, 100) + ", " +  next.primary_image|imageCrop(200, 200) + " 2x" %}
         <picture>

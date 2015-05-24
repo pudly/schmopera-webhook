@@ -203,6 +203,14 @@
       width: 100%;
       height: 100%;
     }
+
+    figcaption {
+      background: #eee;
+      font-size: .75em;
+      text-align: left;
+      padding: 10px;
+      line-height: 1.1em;
+    }
   }
 
   /* image figure */
@@ -575,21 +583,19 @@
     previous and next post jumper
 ----------------------------------------------------- */
 .post--single_jump {
-  padding: 20px 0;
-  overflow: hidden;
   margin-bottom: 20px;
+  overflow: hidden;
 
   a {
-    display: block;
-    float: left;
-    width: 50%;
     position: relative;
+    display: inline-block;
+    padding: 20px 0;
+    width: 50%;
 
-    background: $sch-black;
-    color: #999;
+    vertical-align: top;
     text-decoration: none;
-
-    padding: 20px 10px;
+    color: $sch-black;
+    height: 80px;
 
     > span {
       display: block;
@@ -598,127 +604,115 @@
       text-overflow: ellipsis;
       overflow: hidden;
       font-size: .9em;
+
+      padding-top: 20px;
+
+      color: lighten($sch-black, 20%);
+      text-decoration: none;
     }
 
-    picture, img {
-      height: 100%;
+    > i {
+      height: 42px;
+      width: 25px;
+      line-height: 42px;
     }
 
-    &:before {
-      color: $sch-black;
-      text-transform: uppercase;
-      font-size: 12px;
-      line-height: 12px;
-      position: absolute;
-      top: -12px;
-    }
-
-    &:after {
-      position: absolute;
+    picture {
       display: none;
-    }
 
-    &:hover {
-      background: #000;
-      color: #fff;
-    }
-
-  }
-
-  a.post--single_jump_prev {
-    padding-right: 10px;
-    border-right: 1px solid #fff;
-
-    picture, img {
-      float: left;
-      margin-right: 5px;
-    }
-
-    &:before {
-      content: attr(title);
-      left: 0;
-    }
-
-    &:after {
-      content:"\00ab";
-      float: left;
-    }
-  }
-
-  a.post--single_jump_next {
-    padding-left: 10px;
-    border-left: 1px solid #fff;
-    text-align: right;
-
-    picture, img {
-      float: right;
-      margin-left: 10px;
-    }
-
-    &:before {
-      content: attr(title);
-      left: 0;
-    }
-
-    &:after {
-      float: right;
-      content:"\00bb";
-    }
-  }
-
-  a.post--single_jump_prev + a.post--single_jump_next {
-    float: right;
-
-    &:before {
-      right: 0;
-    }
-  }
-
-
-  @include bp-medium {
-    a {
-      padding: 0;
-    }
-
-    a, a > span {
-      height: 100px;
-      line-height: 100px;
-    }
-
-    a.post--single_jump_prev {
-      > span {
-        margin-left: 65px;
+      > img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
       }
     }
 
-    a.post--single_jump_next {
+    &:before {
+      display: block;
+      position: absolute;
 
-    }
-  }
+      content: attr(title);
 
-  @include bp-large {
-    margin: 40px 0;
-  }
+      top: 20px;
 
-  @include bp-tablet {
-    a {
-      padding: 20px 10px;
-    }
-
-    a, a > span {
-      height: auto;
-      line-height: 1em;
-      margin-left: 0 !important;
+      font-weight: 700;
+      font-size: 1.1em;
+      text-transform: uppercase;
     }
 
-    a picture, a img {
-      display: none;
-    }
-  }
+    &:hover {
+      color: $sch-blue;
 
-  @include bp-mobile {
-    a:only-child {
-      width: 100%;
+      > span {
+        color: $sch-black;
+      }
+
+      picture {
+        display: block;
+      }
+    }
+
+    &.post--single_jump-prev {
+      &:before {
+        left: 25px;
+      }
+
+      > span {
+        margin-left: 25px;
+      }
+
+      > i {
+        float: left;
+      }
+
+      &:hover {
+        > span {
+          margin-left: 70px;
+        }
+
+        picture {
+          float: left;
+        }
+
+        &:before {
+          left: 70px;
+        }
+      }
+    }
+
+    &.post--single_jump-next {
+      float: right;
+
+      &:before {
+        right: 25px;
+      }
+
+      > span {
+        margin-right: 25px;
+        text-align: right;
+      }
+
+      > i {
+        float: right;
+      }
+
+      &:hover {
+        > span {
+          margin-right: 70px;
+        }
+
+        picture {
+          float: right;
+        }
+
+        &:before {
+          right: 70px;
+        }
+      }
+    }
+
+    @include bp-medium {
+      margin-bottom: 40px;
     }
   }
 }

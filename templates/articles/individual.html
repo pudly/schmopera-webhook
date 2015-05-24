@@ -92,6 +92,42 @@
       </nav>
     </section>
 
+  {# Prev/Next Posts #}
+    <nav class="post--single_jump">
+    {% set prev = prevItem(item, 'publish_date', true) %}
+    {% set next = nextItem(item, 'publish_date', true) %}
+    {% if prev %}
+      <a href="{{ url(prev) }}" title="Newer Posts" class="post--single_jump-prev">
+
+        <i class="icon-arrow-left"></i>
+
+        {% set srcset = prev.primary_image|imageCrop(100, 100) + ", " +  prev.primary_image|imageCrop(200, 200) + " 2x" %}
+        <picture>
+          <source srcset="{{ srcset }}" media="(min-width: 40em)">
+          <img src="{{ prev.primary_image|imageCrop(60, 60) }}" alt="{{ prev.name }}">
+        </picture>
+
+        <span>{{ prev.name }}</span>
+
+      </a>
+    {% endif %}
+    {% if next %}
+      <a href="{{ url(next) }}" title="Older Posts" class="post--single_jump-next">
+
+        <i class="icon-arrow-right"></i>
+
+        {% set srcset = next.primary_image|imageCrop(100, 100) + ", " +  next.primary_image|imageCrop(200, 200) + " 2x" %}
+        <picture>
+          <source srcset="{{ srcset }}" media="(min-width: 40em)">
+          <img src="{{ next.primary_image|imageCrop(60, 60) }}" alt="{{ next.name }}">
+        </picture>
+
+        <span>{{ next.name }}</span>
+
+      </a>
+    {% endif %}
+    </nav>
+
   {# Related Content #}
     {% if item.related_articles|size !== 0 || item.related_videos|size !== 0 %}
     {% set relitems = merge(item.related_articles, item.related_videos) %}
@@ -221,37 +257,5 @@
       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </section>
   </div>
-
-{# Prev/Next Articles #}
-  <nav class="post--single_jump">
-  {% set prev = prevItem(item, 'publish_date', true) %}
-  {% set next = nextItem(item, 'publish_date', true) %}
-  {% if prev %}
-    <a href="{{ url(prev) }}" title="Previous Article" class="post--single_jump_prev">
-
-      {% set srcset = prev.primary_image|imageCrop(100, 100) + ", " +  prev.primary_image|imageCrop(200, 200) + " 2x" %}
-      <picture>
-        <source srcset="{{ srcset }}" media="(min-width: 40em)">
-        <img src="{{ prev.primary_image|imageCrop(60, 60) }}" alt="{{ prev.name }}">
-      </picture>
-
-      <span>{{ prev.name }}</span>
-
-    </a>
-  {% endif %}
-  {% if next %}
-    <a href="{{ url(next) }}" title="Next Article" class="post--single_jump_next">
-
-      {% set srcset = next.primary_image|imageCrop(100, 100) + ", " +  next.primary_image|imageCrop(200, 200) + " 2x" %}
-      <picture>
-        <source srcset="{{ srcset }}" media="(min-width: 40em)">
-        <img src="{{ next.primary_image|imageCrop(60, 60) }}" alt="{{ next.name }}">
-      </picture>
-
-      <span>{{ next.name }}</span>
-
-    </a>
-  {% endif %}
-  </nav>
 
 {% endspaceless %}{% endblock %}
