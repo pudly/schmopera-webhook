@@ -27,9 +27,13 @@
             {% if object.publish_date %}
             <em class="post--meta-date">{{ object.publish_date|date('F d, Y') }}</em>
             {% endif %}
+
             {% if object.authors %}
-            <em class="post--meta-author">{{ object.authors[0].name }}</em>
+            {% for author in object.authors %}
+            <em class="post--meta-author">{{ author.name }}</em>
+            {% endfor %}
             {% endif %}
+
             {% if object.youtube_url %}
               <em class="post--meta-type meta-type_video">Video</em>
             {% else %}

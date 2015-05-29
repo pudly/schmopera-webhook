@@ -1351,6 +1351,7 @@ footer {
     _disclaimer
     _preamble
     _body
+    _authors
     _gallery
     _social
     _related
@@ -1551,6 +1552,33 @@ footer {
 ----------------------------------------------------- */
 .post--single_gallery h2 {
   margin-bottom: 0; }
+
+/* -----------------------------------------------------
+    _gallery
+    article thumbnail gallery
+----------------------------------------------------- */
+.post--single_authors .post--single_author {
+  clear: left; }
+  .post--single_authors .post--single_author picture, .post--single_authors .post--single_author img {
+    float: left;
+    border-radius: 100%;
+    margin: auto;
+    width: 80px;
+    height: 80px; }
+  .post--single_authors .post--single_author h2, .post--single_authors .post--single_author .post--single_author-bio, .post--single_authors .post--single_author .post--single_author-meta {
+    margin-left: 100px; }
+  .post--single_authors .post--single_author .post--single_author-bio p {
+    margin-top: 0; }
+  @media only screen and (min-width: 40em) {
+    .post--single_authors .post--single_author picture, .post--single_authors .post--single_author img {
+      width: 100px;
+      height: 100px; }
+    .post--single_authors .post--single_author h2, .post--single_authors .post--single_author .post--single_author-bio, .post--single_authors .post--single_author .post--single_author-meta {
+      margin-left: 120px; }
+    .post--single_authors .post--single_author h2 {
+      margin-bottom: 10px; }
+    .post--single_authors .post--single_author .post--single_author-bio {
+      font-size: .9em; } }
 
 /* -----------------------------------------------------
     _scene

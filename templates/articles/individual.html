@@ -40,12 +40,14 @@
       <span class="post--single_hero-credit">{{ item.primary_image_credit }}</span>
     {% endif %}
 
+
   {# Disclaimer #}
     {% if item.disclaimer %}
     <section class="post--single_disclaimer">
       {{ item.disclaimer }}
     </section>
     {% endif %}
+
 
   {# Preamble #}
     {% if item.preamble %}
@@ -59,6 +61,7 @@
     <section class="post--single_body">
       {{ item.body|markdown }}
     </section>
+
 
   {# Image Gallery #}
     {% if item.gallery|size !== 0 %}
@@ -82,6 +85,7 @@
     </script>
     {% endif %}
 
+
   {# Social media integration #}
     <section class="post--single_social">
       <h2 class="pill">Share</h2>
@@ -92,14 +96,16 @@
       </nav>
     </section>
 
+
   {# Author details #}
     <section class="post--single_authors">
+      <h2 class="pill">Written by</h2>
     {% for author in item.authors %}
       <div class="post--single_author">
         {% set srcset = author.photo|imageCrop(100, 100) + ", " +  author.photo|imageCrop(200, 200) + " 2x" %}
         <picture>
           <source srcset="{{ srcset }}" media="(min-width: 40em)">
-          <img src="{{ author.photo|imageCrop(60, 60) }}" alt="{{ author.name }}">
+          <img src="{{ author.photo|imageCrop(80, 80) }}" alt="{{ author.name }}">
         </picture>
 
         <h2>{{ author.name }}</h2>
@@ -107,14 +113,16 @@
         <div class="post--single_author-bio">
           {{ author.short_bio|markdown }}
         </div>
-
+        {#
         <nav class="post--single_author-meta">
-          {# set authorposts = author.related_articles|size + author.related_videos|size #}
-          <a href="{{ url(author) }}">More info</a>
+          set authorposts = author.related_articles|size + author.related_videos|size
+          <a href="{{ url(author) }}" class="btn">More info</a>
         </nav>
+        #}
       </div>
     {% endfor %}
     </section>
+
 
   {# Prev/Next Posts #}
     <nav class="post--single_jump">
@@ -156,6 +164,7 @@
     {% endif %}
     </nav>
 
+
   {# Related Content #}
     {% if item.related_articles|size !== 0 || item.related_videos|size !== 0 %}
     {% set relitems = merge(item.related_articles, item.related_videos) %}
@@ -187,6 +196,7 @@
       </ul>
     </section>
     {% endif %}
+
 
   {# People and Companies - The Scene #}
     {% if item.people|size !== 0 || item.companies|size !== 0 %}
@@ -224,6 +234,7 @@
       {% endif %}
     </section>
     {% endif %}
+
 
   {# Box Office #}
     {% if item.box_office|size !== 0 %}
@@ -275,6 +286,7 @@
       </ul>
     </section>
     {% endif %}
+
 
   {# Comments from Disqus #}
     <section class="post--single_comments" id="comments">

@@ -7,6 +7,7 @@
     _disclaimer
     _preamble
     _body
+    _authors
     _gallery
     _social
     _related
@@ -292,6 +293,51 @@
   }
 }
 
+
+/* -----------------------------------------------------
+    _gallery
+    article thumbnail gallery
+----------------------------------------------------- */
+.post--single_authors {
+  .post--single_author {
+    clear: left;
+
+    picture, img {
+      float: left;
+      border-radius: 100%;
+      margin: auto;
+      width: 80px;
+      height: 80px;
+    }
+
+    h2, .post--single_author-bio, .post--single_author-meta {
+      margin-left: 100px;
+    }
+
+    .post--single_author-bio p {
+      margin-top: 0;
+    }
+
+    @include bp-medium {
+      picture, img {
+        width: 100px;
+        height: 100px;
+      }
+
+      h2, .post--single_author-bio, .post--single_author-meta {
+        margin-left: 120px;
+      }
+
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      .post--single_author-bio {
+        font-size: .9em;
+      }
+    }
+  }
+}
 
 /* -----------------------------------------------------
     _scene
