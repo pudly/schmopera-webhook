@@ -64,13 +64,13 @@ a {
 
 .disclaimer {
   clear: left;
-  background: $sch-blue;
-  color: #fff;
+  background: #eee;
   padding: 20px;
-  border-left: 10px solid darken($sch-blue, 10%);
+  border-left: 10px solid $sch-blue;
   font-size: .8em;
   margin-bottom: 40px;
   position: relative;
+  line-height: 1.2em !important;
 
   h2 {
     margin: 0 !important;
@@ -89,7 +89,7 @@ a {
     top: 50%;
     margin-top: -20px;
     left: -25px;
-    background: darken($sch-blue, 20%);
+    background: $sch-blue;
     border-radius: 50%;
     color: #fff;
     text-align: center;
