@@ -1,10 +1,18 @@
 /* baseline html5 shiv */
 article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
 
+html, body, body.nav-inactive {
+  padding: 0;
+  margin: 0;
+  background: #fff;
+
+  overflow: hidden;
+  overflow-y: auto;
+}
+
 html {
   box-sizing: border-box;
   width: 100%;
-  overflow-x: hidden;
 
   body {
     height: 100%;
@@ -13,23 +21,13 @@ html {
   &.nav-active {
     body {
       height: 100%;
-      overflow: hidden;
+      overflow-y: hidden;
     }
-  }
-
-  &.nav-inactive {
-
   }
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
-}
-
-body, html {
-  padding: 0;
-  margin: 0;
-  background: #fff;
 }
 
 a, a:before, a:after, a > img {
