@@ -49,6 +49,12 @@
         }
       }
     }
+
+    @include bp-micro {
+      h3 {
+        display: none;
+      }
+    }
   }
 }
 
