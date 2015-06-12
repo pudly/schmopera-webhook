@@ -11,7 +11,7 @@
 
 <ul class="paginator">
   {% if curPage > 1 %}
-  <li class="prev"><a href="{{ getPageUrl(curPage - 1) }}">&laquo;&nbsp;<span>Newer Posts</span></a></li>
+  <li class="prev"><a href="{{ getPageUrl(curPage - 1) }}"><i class="icon-arrow-left"></i><span>Newer Posts</span></a></li>
   {% endif %}
 
   {% if curPage == 1%}
@@ -57,7 +57,7 @@
   {% endif %}
 
   {% if curPage < maxPage %}
-  <li class="next"><a href="{{ getPageUrl(curPage + 1) }}"><span>Older Posts</span>&nbsp;&raquo;</a></li>
+  <li class="next"><a href="{{ getPageUrl(curPage + 1) }}"><span>Older Posts</span><i class="icon-arrow-right"></i></a></li>
   {% endif %}
 </ul>
 

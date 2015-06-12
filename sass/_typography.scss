@@ -39,16 +39,16 @@ a h1 {
 
 .pill {
   float: left;
-  min-height: 30px;
+  height: 40px;
   margin: 0 0 20px 0;
-  padding: .3em .3em;
+  padding: 0 .3em;
 
   background: $sch-black;
   color: #fff;
 
   font-size: 1.43em;
   font-weight: 700;
-  line-height: 1em;
+  line-height: 40px;
 
   @include bp-large {
     margin-bottom: 40px;
