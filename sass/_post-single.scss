@@ -67,7 +67,7 @@
     }
 
     @include bp-medium {
-      max-width: 80%;
+      max-width: 90%;
       font-size: 2.2em;
       bottom: 40px;
 
@@ -95,6 +95,7 @@
 .post--single_hero-credit + .post--single_social,
 .post--single_hero + .post--single_social {
   margin-top: -30px;
+  margin-bottom: 40px;
 }
 
 
@@ -607,11 +608,13 @@
 ----------------------------------------------------- */
 .post--single_social {
   overflow: hidden;
-  margin-bottom: 20px;
 
   nav {
     clear: left;
-    background: #eee;
+
+    @include bp-medium {
+      background: #eee;
+    }
   }
 
   .pill {
@@ -622,10 +625,6 @@
     nav {
       clear: left;
     }
-  }
-
-  @include bp-large {
-    margin-bottom: 40px;
   }
 }
 
