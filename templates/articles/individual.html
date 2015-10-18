@@ -41,6 +41,15 @@
     {% endif %}
 
 
+  {# Social media integration #}
+    <section class="post--single_social">
+      <nav class="nav--share">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}" class="social--facebook pill"><i class="icon-facebook"></i> Facebook <em class="social--count_facebook" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
+        <a href="https://twitter.com/share?url={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}&via=schmopera&text={{ item.name|url_encode }}" class="social--twitter pill"><i class="icon-twitter"></i> Twitter <em class="social--count_twitter" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
+      </nav>
+    </section>
+
+
   {# Disclaimer #}
     {% if item.disclaimer %}
     <section class="post--single_disclaimer">
@@ -88,11 +97,9 @@
 
   {# Social media integration #}
     <section class="post--single_social">
-      <h2 class="pill">Share</h2>
       <nav class="nav--share">
         <a href="https://www.facebook.com/sharer/sharer.php?u={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}" class="social--facebook pill"><i class="icon-facebook"></i> Facebook <em class="social--count_facebook" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
         <a href="https://twitter.com/share?url={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}&via=schmopera&text={{ item.name|url_encode }}" class="social--twitter pill"><i class="icon-twitter"></i> Twitter <em class="social--count_twitter" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
-        <a href="#comments" class="pill __sub">Jump to Comments</a>
       </nav>
     </section>
 
@@ -105,7 +112,7 @@
         {% set srcset = author.photo|imageCrop(100, 100) + ", " +  author.photo|imageCrop(200, 200) + " 2x" %}
         <picture>
           <source srcset="{{ srcset }}" media="(min-width: 40em)">
-          <img src="{{ author.photo|imageCrop(80, 80) }}" alt="{{ author.name }}">
+          <img src="{{ author.photo|imageCrop(100, 100) }}" alt="{{ author.name }}">
         </picture>
 
         <h2>{{ author.name }}</h2>

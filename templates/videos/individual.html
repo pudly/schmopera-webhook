@@ -41,6 +41,15 @@
     {% endif %}
 
 
+  {# Social media integration #}
+    <section class="post--single_social">
+      <nav class="nav--share">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}" class="social--facebook pill"><i class="icon-facebook"></i> Facebook <em class="social--count_facebook" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
+        <a href="https://twitter.com/share?url={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}&via=schmopera&text={{ item.name|url_encode }}" class="social--twitter pill"><i class="icon-twitter"></i> Twitter <em class="social--count_twitter" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
+      </nav>
+    </section>
+
+
   {# Disclaimer #}
     {% if item.disclaimer %}
     <section class="post--single_disclaimer">
@@ -95,11 +104,9 @@
 
   {# Social media integration #}
     <section class="post--single_social">
-      <h2 class="pill">Share</h2>
       <nav class="nav--share">
         <a href="https://www.facebook.com/sharer/sharer.php?u={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}" class="social--facebook pill"><i class="icon-facebook"></i> Facebook <em class="social--count_facebook" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
         <a href="https://twitter.com/share?url={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}&via=schmopera&text={{ item.name|url_encode }}" class="social--twitter pill"><i class="icon-twitter"></i> Twitter <em class="social--count_twitter" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
-        <a href="#comments" class="pill __sub">Jump to Comments</a>
       </nav>
     </section>
 
@@ -112,7 +119,7 @@
         {% set srcset = author.photo|imageCrop(100, 100) + ", " +  author.photo|imageCrop(200, 200) + " 2x" %}
         <picture>
           <source srcset="{{ srcset }}" media="(min-width: 40em)">
-          <img src="{{ author.photo|imageCrop(80, 80) }}" alt="{{ author.name }}">
+          <img src="{{ author.photo|imageCrop(100, 100) }}" alt="{{ author.name }}">
         </picture>
 
         <h2>{{ author.name }}</h2>
@@ -129,39 +136,6 @@
       </div>
     {% endfor %}
     </section>
-
-
-  {# Related Content #}
-    {% if item.related_articles|size !== 0 || item.related_videos|size !== 0 %}
-    {% set relitems = merge(item.related_articles, item.related_videos) %}
-    {% set relitems = relitems|sort('publish_date', true) %}
-    <section class="post--single_related">
-      <h2 class="pill">{{ item.related_content_heading|default('Related Content') }}</h2>
-      <ul class="post--list __mini">
-        {% for relation in relitems %}
-        <li>
-          <a href="{{ url(relation) }}" class="post--list-title">
-            {% set srcset = relation.primary_image|imageCrop(100, 100) + ", " +  relation.primary_image|imageCrop(200, 200) + " 2x" %}
-            <picture>
-              <source srcset="{{ srcset }}" media="(min-width: 40em)">
-              <img src="{{ relation.primary_image|imageCrop(100, 100) }}" alt="{{ relation.name }}">
-            </picture>
-
-            <h1>{{ relation.name }}</h1>
-
-            <p class="post--list-desc">{{ relation.short_description }}</p>
-
-            {% if relation.youtube_url %}
-              <span class="btn post--button">Watch Video</span>
-            {% else %}
-              <span class="btn post--button">Read More</span>
-            {% endif %}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </section>
-    {% endif %}
 
 
   {# Prev/Next Posts #}
@@ -203,6 +177,39 @@
       </a>
     {% endif %}
     </nav>
+
+
+  {# Related Content #}
+    {% if item.related_articles|size !== 0 || item.related_videos|size !== 0 %}
+    {% set relitems = merge(item.related_articles, item.related_videos) %}
+    {% set relitems = relitems|sort('publish_date', true) %}
+    <section class="post--single_related">
+      <h2 class="pill">{{ item.related_content_heading|default('Related Content') }}</h2>
+      <ul class="post--list __mini">
+        {% for relation in relitems %}
+        <li>
+          <a href="{{ url(relation) }}" class="post--list-title">
+            {% set srcset = relation.primary_image|imageCrop(100, 100) + ", " +  relation.primary_image|imageCrop(200, 200) + " 2x" %}
+            <picture>
+              <source srcset="{{ srcset }}" media="(min-width: 40em)">
+              <img src="{{ relation.primary_image|imageCrop(100, 100) }}" alt="{{ relation.name }}">
+            </picture>
+
+            <h1>{{ relation.name }}</h1>
+
+            <p class="post--list-desc">{{ relation.short_description }}</p>
+
+            {% if relation.youtube_url %}
+              <span class="btn post--button">Watch Video</span>
+            {% else %}
+              <span class="btn post--button">Read More</span>
+            {% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
 
 
   {# People and Companies - The Scene #}

@@ -92,6 +92,11 @@
   margin-bottom: 40px;
 }
 
+.post--single_hero-credit + .post--single_social,
+.post--single_hero + .post--single_social {
+  margin-top: -30px;
+}
+
 
 /* -----------------------------------------------------
     _disclaimer
@@ -193,7 +198,7 @@
     width: 100%;
     height: 0;
 
-    margin: 40px 0 0 0;
+    margin: 40px 0 60px 0;
     padding: 0;
 
     padding-top: 56.25%;
@@ -307,16 +312,21 @@
       float: left;
       border-radius: 100%;
       margin: auto;
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
     }
 
     h2, .post--single_author-bio, .post--single_author-meta {
-      margin-left: 100px;
+        margin-left: 120px;
+    }
+
+    h2 {
+        margin-bottom: 10px;
     }
 
     .post--single_author-bio p {
       margin-top: 0;
+      font-size: .9em;      
     }
 
     @include bp-medium {
@@ -326,15 +336,15 @@
       }
 
       h2, .post--single_author-bio, .post--single_author-meta {
-        margin-left: 120px;
+
       }
 
       h2 {
-        margin-bottom: 10px;
+
       }
 
       .post--single_author-bio {
-        font-size: .9em;
+
       }
     }
   }
@@ -594,6 +604,7 @@
 
   nav {
     clear: left;
+    background: #eee;
   }
 
   .pill {
