@@ -244,9 +244,12 @@
     margin: 20px 0;
     padding: 20px 20px 20px 0;
     font-style: italic;
+    font-size: 1.4em;
+    font-weight: 700;
     color: #fff;
     position: relative;
     background: $sch-blue;
+    border-left: 5px solid darken($sch-blue, 20%);
 
     &:before {
       content: '';
@@ -264,6 +267,10 @@
 
     > p:last-child {
       margin-bottom: 0;
+    }
+
+    a {
+      color: $sch-black;
     }
 
     @include bp-medium {
@@ -326,7 +333,7 @@
 
     .post--single_author-bio p {
       margin-top: 0;
-      font-size: .9em;      
+      font-size: .9em;
     }
 
     @include bp-medium {
