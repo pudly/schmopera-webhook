@@ -214,7 +214,14 @@
 
       a {
         width: 50%;
-        border: 0 !important
+        border: 0 !important;
+        font-size: .9em;
+      }
+    }
+
+    @include bp-micro {
+      a span {
+        display: none;
       }
     }
   }
@@ -471,23 +478,6 @@
 }
 
 @media only screen and (max-width: 40em) {
-  .nav--jump {
-    position: fixed;
-    left: 20px;
-    top: 20px;
-    z-index: 100;
-
-    @include translate(0, 0);
-    opacity: 1;
-    @include transition(all .2s ease-in-out);
-  }
-
-  .scroll .nav--jump {
-    @include translate(0, -20px);
-    opacity: 0;
-    pointer-events: none;
-  }
-
   .nav--primary {
 
     .nav--primary_sitemap {

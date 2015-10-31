@@ -65,9 +65,7 @@
     background: url(/static/images/logo.svg) no-repeat;
     background-size: auto 100%;
     position: relative;
-    top: 20px;
-    margin-left: 70px;
-    margin-bottom: 20px;
+    margin-left: 50px;
   }
 }
 
@@ -130,6 +128,40 @@
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 40em) {
+  .content--main {
+    padding-top: 80px !important;
+  }
+
+  .page--header {
+    position: fixed;
+    z-index: 100;
+
+    @include translate(0, 0);
+    opacity: 1;
+    @include transition(all .2s ease-in-out);
+
+    background: #fff;
+
+    padding: 20px;
+
+    .nav--jump {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .site-branding {
+    }
+  }
+
+  .scroll .page--header {
+    @include translate(0, -20px);
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
