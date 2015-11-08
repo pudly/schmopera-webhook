@@ -193,6 +193,11 @@
     margin: 40px 0;
   }
 
+  ol li,
+  ul li {
+    margin: 1.5em 0;
+  }
+
   /* video embed figure */
   figure[data-type='video'] {
     position: relative;
