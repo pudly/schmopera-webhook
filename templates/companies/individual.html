@@ -100,6 +100,11 @@
       {{ item.description|markdown }}
     </section>
 
+  {# Adspot 1 #}
+    <section class="scene--single_adspot">
+{% include "templates/partials/ad-spot1.html" %}
+    </section>
+
   {# Related Content #}
     {% if item.related_articles|size !== 0 || item.related_videos|size !== 0 %}
     {% set relitems = merge(item.related_articles, item.related_videos) %}

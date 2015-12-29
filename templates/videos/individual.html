@@ -14,6 +14,44 @@
 
 {% block content %}{% spaceless %}
 
+{# Schema.org Rich Snippets #}
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"http://www.schmopera.com"
+    },
+    "headline": "{{ item.name }}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{ item.primary_image|imageCrop(800, 800) }}",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "{{ item.publish_date }}",
+    "dateModified": "{{ item.publish_date }}",
+    "author": {
+      {% for relation in item.authors %}
+        "@type": "Person",
+        "name": "{{ relation.name }}"
+      {% endfor %}
+    },
+     "publisher": {
+      "@type": "Organization",
+      "name": "Schmopera",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://www.schmopera.com/static/images/logo.png",
+        "width": 800,
+        "height": 800
+      }
+    },
+    "description": "{{ item.short_description }}"
+  }
+  </script>
+
   <div class="post--single">
 
   {# Primary Hero #}
@@ -108,6 +146,12 @@
         <a href="https://www.facebook.com/sharer/sharer.php?u={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}" class="social--facebook pill"><i class="icon-facebook"></i> Facebook <em class="social--count_facebook" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
         <a href="https://twitter.com/share?url={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}&via=schmopera&text={{ item.name|url_encode }}" class="social--twitter pill"><i class="icon-twitter"></i> Twitter <em class="social--count_twitter" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
       </nav>
+    </section>
+
+
+  {# Adspot 1 #}
+    <section class="post--single_adspot">
+{% include "templates/partials/ad-spot1.html" %}
     </section>
 
 
