@@ -140,6 +140,8 @@
     position: fixed;
     z-index: 100;
 
+    width: 100%;
+
     @include translate(0, 0);
     opacity: 1;
     @include transition(all .2s ease-in-out);
