@@ -171,12 +171,9 @@
         <div class="post--single_author-bio">
           {{ author.short_bio|markdown }}
         </div>
-        {#
         <nav class="post--single_author-meta">
-          set authorposts = author.related_articles|size + author.related_videos|size
           <a href="{{ url(author) }}" class="btn">More info</a>
         </nav>
-        #}
       </div>
     {% endfor %}
     </section>

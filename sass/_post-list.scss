@@ -127,7 +127,7 @@
         width: 100px;
         height: 100px;
         float: left;
-        margin-right: 20px;
+        margin-right: 10px;
       }
 
       a {
@@ -135,7 +135,7 @@
         overflow: hidden;
 
         > h1, > p, > .btn {
-          margin-left: 120px;
+          margin-left: 110px;
         }
 
         .btn {
@@ -144,6 +144,13 @@
 
         > h1 {
           font-size: 1.4em;
+          margin-left: 110px;
+        }
+
+        > h2 {
+          font-size: .85em;
+          margin: -.5em 0 1em 110px;
+          text-transform: Capitalize;
         }
 
         > p {
@@ -156,16 +163,36 @@
           background: #f9f9f9 !important;
           outline: 10px solid #f9f9f9;
         }
+
+        .post--list-desc {
+          display: none;
+        }
+
+        @include bp-large {
+          .post--list-desc {
+            display: block;
+          }
+        }
       }
 
       &:last-child {
         padding-bottom: 0 !important;
       }
 
-      @include bp-medium {
+      @include bp-large {
         padding-bottom: 40px;
       }
     }
+
+
+    & + .paginator {
+      margin-top: 20px;
+
+      @include bp-medium {
+        margin-top: 40px;
+      }
+    }
+
   }
 
 /* micro version of list */

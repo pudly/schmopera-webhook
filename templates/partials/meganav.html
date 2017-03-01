@@ -41,6 +41,8 @@
           {% for object in data_categories %}
             <li><a href="{{ url(object) }}">{{ object.name }}</a></li>
           {% endfor %}
+
+          <li><a href="{{ url('authors') }}">Authors</a></li>
         </ul>
 
         <h3>The Scene</h3>

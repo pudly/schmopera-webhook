@@ -62,16 +62,16 @@ document.addEventListener('DOMContentLoaded', function() {
       socialight.add(new Facebook());
       socialight.draw();
   }
-
-  function slTwitter ($element) {
-      var socialight = new Socialight({
-          container: $element,
-          url: $element.getAttribute("data-url")
-        });
-
-      socialight.add(new Twitter());
-      socialight.draw();
-  }
+  // 
+  // function slTwitter ($element) {
+  //     var socialight = new Socialight({
+  //         container: $element,
+  //         url: $element.getAttribute("data-url")
+  //       });
+  //
+  //     socialight.add(new Twitter());
+  //     socialight.draw();
+  // }
 
   var social_fb = document.querySelectorAll(".social--count_facebook"), i, len;
 
@@ -79,11 +79,11 @@ document.addEventListener('DOMContentLoaded', function() {
       slFacebook(social_fb[i]);
   }
 
-  var social_tw = document.querySelectorAll(".social--count_twitter"), i, len;
+  // var social_tw = document.querySelectorAll(".social--count_twitter"), i, len;
 
-  for (i = 0, len = social_tw.length; i < len; i++) {
-      slTwitter(social_tw[i]);
-  }
+  // for (i = 0, len = social_tw.length; i < len; i++) {
+  //     slTwitter(social_tw[i]);
+  // }
 
 // toggle
   var $toggle_el = document.querySelector('a[rel=toggle]');

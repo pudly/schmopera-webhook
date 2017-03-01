@@ -198,6 +198,11 @@
     margin: 1.5em 0;
   }
 
+  .nospace li,
+  .nospace li {
+    margin: 0;
+  }
+
   /* video embed figure */
   figure[data-type='video'] {
     position: relative;
@@ -653,6 +658,7 @@
 ----------------------------------------------------- */
 .post--single_jump {
   margin-bottom: 20px;
+  clear: both;
 
   a {
     position: relative;
