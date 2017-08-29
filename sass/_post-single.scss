@@ -42,7 +42,7 @@
 ----------------------------------------------------- */
 .post--single_hero {
   position: relative;
-  margin-bottom: 40px !important;
+  margin: 0 -20px 40px -20px;
 
   img {
     width: 100%;
@@ -52,7 +52,7 @@
   h1 {
     position: absolute;
     bottom: 20px;
-    left: 0;
+    left: 5px;
     margin: 0;
     font-size: 1.8em;
 
@@ -63,13 +63,14 @@
       color: $sch-black;
       padding: .08em 0;
       line-height: 1.1em;
-      box-shadow: 5px 0 0 #fff;
+      box-shadow: 5px 0 0 #fff, -5px 0 0 #fff;
     }
 
     @include bp-medium {
       max-width: 90%;
       font-size: 2.2em;
       bottom: 40px;
+      left: 0;
 
       span {
         box-shadow: 15px 0 0 #fff;
@@ -80,16 +81,32 @@
       font-size: 3em;
     }
   }
+
+  @include bp-medium {
+    margin: 0 0 40px 0;
+  }
 }
 
 .post--single_hero-credit {
   display: block;
+  position: relative;
   background: #eee;
   font-size: .75em;
   text-align: left;
   padding: 10px;
+  margin: -40px -20px 40px -20px;
+
+  @include bp-medium {
+    margin: -40px 0 40px 0;
+  }
+}
+
+.post--single_hero + .post--single_hero-credit {
   margin-top: -40px;
-  margin-bottom: 40px;
+
+  @include bp-large {
+    margin-top: -60px;
+  }
 }
 
 .post--single_hero-credit + .post--single_social,
@@ -110,14 +127,41 @@
     primary content preamble
 ----------------------------------------------------- */
 .post--single_preamble {
-  font-style: italic;
-  padding: 20px 0 20px 20px;
+  // font-family: "Lora";
+  font-weight: 400;
+  padding: 15px 20px 20px 20px;
   margin: 0 0 40px 0 !important;
-  line-height: 1.5em;
+  line-height: 1.3em;
+
+  font-size: .85em;
+  color: #555;
 
   position: relative;
 
+  border-right: 5px solid #ccc;
   background: #eee;
+  // border-bottom: 1px solid #ccc;
+
+  // background: #f5f5f5;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    height: 5px;
+    background: #ccc;
+    width: 100%;
+    right: -5px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    height: 5px;
+    background: #eee;
+    width: 100%;
+  }
 
   @include bp-large {
     margin-right: 40px;
@@ -133,16 +177,6 @@
 
   p:last-child {
     margin-bottom: 0;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    height: 100%;
-    top: 0;
-    background: #eee;
-    width: 100%;
-    right: -100%;
   }
 }
 
@@ -209,7 +243,7 @@
     width: 100%;
     height: 0;
 
-    margin: 40px 0 60px 0;
+    margin: 40px -20px 60px -20px;
     padding: 0;
 
     padding-top: 56.25%;
@@ -229,12 +263,16 @@
       padding: 10px;
       line-height: 1.1em;
     }
+
+    @include bp-medium {
+      margin: 0;
+    }
   }
 
   /* image figure */
   figure[data-type='image'] {
     padding: 0;
-    margin: 0;
+    margin: 0 -20px;
 
     img {
       display: block;
@@ -247,6 +285,10 @@
       text-align: left;
       padding: 10px;
       line-height: 1.1em;
+    }
+
+    @include bp-medium {
+      margin: 0;
     }
   }
 

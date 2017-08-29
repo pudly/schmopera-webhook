@@ -19,12 +19,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.addEventListener('scroll', function() {
     var st = window.pageYOffset;
+    var ft = document.body.clientHeight;
+    var vh = window.innerHeight;
 
-    if (st > st_cur && st > '90') {
+    // var ap = document.querySelector('.post--single_authors')[0].offsetTop;
+
+    if (st > st_cur && st > '90' && st_cur < (ft - vh - 100)) {
       $body.classList.add('scroll');
     } else {
       $body.classList.remove('scroll');
     }
+
+    // if (st_cur < (ft - vh - 100)) {
+    //   $body.classList.add('article-read');
+    // } else {
+    //   $body.classList.remove('article-read');
+    // }
+    //
+    // console.log(ap);
 
     st_cur = st;
 
@@ -62,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
       socialight.add(new Facebook());
       socialight.draw();
   }
-  // 
+  //
   // function slTwitter ($element) {
   //     var socialight = new Socialight({
   //         container: $element,

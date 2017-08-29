@@ -79,14 +79,14 @@
     {% endif %}
 
 
-  {# Social media integration #}
+  {# Social media integration
     <section class="post--single_social">
       <nav class="nav--share">
         <a href="https://www.facebook.com/sharer/sharer.php?u={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}" class="social--facebook pill"><i class="icon-facebook"></i> Facebook <em class="social--count_facebook" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
         <a href="https://twitter.com/share?url={{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}&via=schmopera&text={{ item.name|url_encode }}" class="social--twitter pill"><i class="icon-twitter"></i> Twitter <em class="social--count_twitter" data-url="{{ site_url }}{{ url(item)|replace('&', '&amp;', 'g') }}"></em></a>
       </nav>
     </section>
-
+  #}
 
   {# Disclaimer #}
     {% if item.disclaimer %}
