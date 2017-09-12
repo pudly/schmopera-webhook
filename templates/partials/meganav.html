@@ -84,8 +84,12 @@
 
                 <picture>
                   {% set srcset = object.primary_image|imageCrop(400, 140) + ", " +  object.primary_image|imageCrop(800, 280) + " 2x" %}
-                  <source srcset="{{ srcset }}" media="(min-width: 40em)">
-                  <img src="{{ object.primary_image|imageCrop(400, 140) }}" alt="{{ object.name }}">
+                  <!-- <source srcset="{{ srcset }}" media="(min-width: 40em)"> -->
+                    <img
+                      class="lazyload"
+                      data-src="{{ object.primary_image|imageCrop(400, 140) }}" alt="{{ object.name }}"
+                      data-srcset="{{ srcset }}" alt="{{ item.name }}"
+                      >
                 </picture>
                 {% endif %}
                 <strong>{{ object.name }}</strong>

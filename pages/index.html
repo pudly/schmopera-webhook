@@ -26,14 +26,22 @@
         {% if loop.first %}
           {% set srcset = item.primary_image|imageCrop(680, 340) + ", " + item.primary_image|imageCrop(1360, 680) + " 2x" %}
           <picture>
-            <source srcset="{{ srcset }}" media="(min-width: 40em)">
-            <img src="{{ item.primary_image|imageCrop(680, 340) }}" alt="{{ item.name }}">
+            <!-- <source srcset="{{ srcset }}" media="(min-width: 40em)"> -->
+            <img
+              class="lazyload"
+              data-src="{{ item.primary_image|imageCrop(680, 340) }}" alt="{{ item.name }}"
+              data-srcset="{{ srcset }}" alt="{{ item.name }}"
+              >
           </picture>
           {% else %}
           {% set srcset = item.primary_image|imageCrop(340, 340) + ", " + item.primary_image|imageCrop(680, 680) + " 2x" %}
           <picture>
-            <source srcset="{{ srcset }}" media="(min-width: 40em)">
-            <img src="{{ item.primary_image|imageCrop(300, 300) }}" alt="{{ item.name }}">
+            <!-- <source srcset="{{ srcset }}" media="(min-width: 40em)"> -->
+            <img
+              class="lazyload"
+              data-src="{{ item.primary_image|imageCrop(300, 300) }}" alt="{{ item.name }}"
+              data-srcset="{{ srcset }}" alt="{{ item.name }}"
+              >
           </picture>
         {% endif %}
 
@@ -61,8 +69,12 @@
         <a href="{{ url(item)|replace('&', '&amp;', 'g') }}" class="post--list-image">
           {% set srcset = item.primary_image|imageCrop(680, 680) + ", " +  item.primary_image|imageCrop(1360, 1360) + " 2x" %}
           <picture>
-            <source srcset="{{ srcset }}" media="(min-width: 40em)">
-            <img src="{{ item.primary_image|imageCrop(400, 400) }}" alt="{{ item.name }}">
+            <!-- <source srcset="{{ srcset }}" media="(min-width: 40em)"> -->
+            <img
+              class="lazyload"
+              data-src="{{ item.primary_image|imageCrop(400, 400) }}" alt="{{ item.name }}"
+              data-srcset="{{ srcset }}" alt="{{ item.name }}"
+              >
           </picture>
           <span class="post--meta">
             {% if item.publish_date %}

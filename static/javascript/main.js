@@ -120,3 +120,7 @@ function offset(elt) {
     left: rect.left + bodyElt .scrollLeft
   }
 }
+
+
+// initialize lazyload
+lazyload();

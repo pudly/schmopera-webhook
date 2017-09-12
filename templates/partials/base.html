@@ -56,11 +56,14 @@
 
     {% endspaceless %}
 
+      <script src="/static/javascript/lazyload.js"></script>
+
       <!-- build:js /static/javascript/minified.js -->
       <script src="/static/javascript/fastclick.js"></script>
       <script src="/static/javascript/socialight.js"></script>
       <script src="/static/javascript/lightbox.js"></script>
       <script src="/static/javascript/main.js"></script>
+      <script src="/static/javascript/autotrack.js"></script>
       <!-- endbuild -->
 
       {% block scripts_extra %}{% endblock %}
@@ -72,6 +75,10 @@
 
         ga('create', 'UA-46647120-1', 'schmopera.com');
         ga('require', 'displayfeatures');
+        ga('require', 'eventTracker');
+        ga('require', 'outboundLinkTracker');
+        ga('require', 'urlChangeTracker');
+
         ga('send', 'pageview');
       </script>
 

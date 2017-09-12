@@ -51,9 +51,13 @@
   </div>
   <section class="footer--about">
       <div class="container">
-        <img src="/static/images/jenna.jpg" class="footer--about-profile" alt="Jenna Douglas Profile">
+        <img
+          class="lazyload footer--about-profile"
+          data-src="/static/images/jenna.jpg" alt="{{ object.name }}"
+          alt="Jenna's Profile"
+          >
         <div class="footer--about-info">
-          <p class="footer--about-info-hero">Schmopera is the brainchild of <strong>Jenna douglas</strong></p>
+          <p class="footer--about-info-hero">Schmopera is the brainchild of <strong>Jenna Simeonov</strong></p>
 
           {{ site_data.jennas_bio|markdown }}
 
