@@ -24,21 +24,23 @@
     {% for item in featured %}
       <a href="{{ url(item) }}" class="post--featured_item">
         {% if loop.first %}
-          {% set srcset = item.primary_image|imageCrop(680, 340) + ", " + item.primary_image|imageCrop(1360, 680) + " 2x" %}
+          {% set srcset = item.primary_image|imageCrop(680, 340) + " 480w, " + item.primary_image|imageCrop(1360, 680) + " 2x" %}
           <picture>
             <!-- <source srcset="{{ srcset }}" media="(min-width: 40em)"> -->
             <img
               class="lazyload"
+              src="{{ item.primary_image|imageCrop(68, 34) }}"
               data-src="{{ item.primary_image|imageCrop(680, 340) }}" alt="{{ item.name }}"
               data-srcset="{{ srcset }}" alt="{{ item.name }}"
               >
           </picture>
           {% else %}
-          {% set srcset = item.primary_image|imageCrop(340, 340) + ", " + item.primary_image|imageCrop(680, 680) + " 2x" %}
+          {% set srcset = item.primary_image|imageCrop(340, 340) + " 480w, " + item.primary_image|imageCrop(680, 680) + " 2x" %}
           <picture>
             <!-- <source srcset="{{ srcset }}" media="(min-width: 40em)"> -->
             <img
               class="lazyload"
+              src="{{ item.primary_image|imageCrop(30, 30) }}"
               data-src="{{ item.primary_image|imageCrop(300, 300) }}" alt="{{ item.name }}"
               data-srcset="{{ srcset }}" alt="{{ item.name }}"
               >
@@ -67,12 +69,13 @@
         <a href="{{ url(item)|replace('&', '&amp;', 'g') }}" class="post--list-title"><h1>{{ item.name }}</h1></a>
         {% if item.primary_image %}
         <a href="{{ url(item)|replace('&', '&amp;', 'g') }}" class="post--list-image">
-          {% set srcset = item.primary_image|imageCrop(680, 680) + ", " +  item.primary_image|imageCrop(1360, 1360) + " 2x" %}
+          {% set srcset = item.primary_image|imageCrop(680, 480) + " 480w, " +  item.primary_image|imageCrop(1360, 960) + " 2x" %}
           <picture>
             <!-- <source srcset="{{ srcset }}" media="(min-width: 40em)"> -->
             <img
               class="lazyload"
-              data-src="{{ item.primary_image|imageCrop(400, 400) }}" alt="{{ item.name }}"
+              src="{{ item.primary_image|imageCrop(40, 30) }}"
+              data-src="{{ item.primary_image|imageCrop(400, 300) }}" alt="{{ item.name }}"
               data-srcset="{{ srcset }}" alt="{{ item.name }}"
               >
           </picture>

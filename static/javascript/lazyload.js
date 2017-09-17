@@ -6,7 +6,7 @@
     } else {
         root.LazyLoad = factory(root);
     }
-}) (typeof global !== "undefined" ? global : this.window || this.global, function (root) {
+})(typeof global !== "undefined" ? global : this.window || this.global, function (root) {
 
     "use strict";
 
@@ -23,7 +23,7 @@
     * @param {Object}   objects  The objects to merge together
     * @returns {Object}          Merged values of defaults and options
     */
-    const extend = function ()  {
+    const extend = function () {
 
         let extended = {};
         let deep = false;
@@ -67,7 +67,7 @@
     }
 
     LazyLoad.prototype = {
-        init: function() {
+        init: function () {
 
             /* Without observers load everything and bail out early. */
             if (!root.IntersectionObserver) {
@@ -82,7 +82,7 @@
                 threshold: [0]
             };
 
-            this.observer = new IntersectionObserver(function(entries) {
+            this.observer = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (entry.intersectionRatio > 0) {
                         self.observer.unobserve(entry.target);
@@ -140,19 +140,10 @@
         }
     };
 
-    root.lazyload = function(images, options) {
+    root.lazyload = function (images, options) {
         return new LazyLoad(images, options);
     };
 
-    if (window.jQuery) {
-        const $ = window.jQuery;
-        $.fn.lazyload = function (options) {
-            options = options || {};
-            options.attribute = options.attribute || "data-src";
-            new LazyLoad($.makeArray(this), options);
-            return this;
-        };
-    }
 
     return LazyLoad;
 });

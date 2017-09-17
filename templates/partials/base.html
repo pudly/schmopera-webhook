@@ -28,7 +28,7 @@
     <link rel="apple-touch-icon" href="/static/images/touch-icon.png">
 
     <!-- build:css /static/css/minified.css -->
-    <link rel="stylesheet" href="/static/css/schmopera.css"/>
+    <link rel="stylesheet" href="/static/css/schmopera.css" media="all">
     <!-- endbuild -->
     {% block head_extra -%}{% endblock %}
   </head>
@@ -56,8 +56,9 @@
 
     {% endspaceless %}
 
-      <script src="/static/javascript/lazyload.js"></script>
 
+      <script src="/static/javascript/lazyload.min.js"></script>
+    
       <!-- build:js /static/javascript/minified.js -->
       <script src="/static/javascript/fastclick.js"></script>
       <script src="/static/javascript/socialight.js"></script>
