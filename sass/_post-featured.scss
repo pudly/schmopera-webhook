@@ -10,13 +10,21 @@
 ----------------------------------------------------- */
 .post--featured {
   position: relative;
-  overflow: hidden;
+  margin: 0 -20px 40px -20px;
 
-  margin: 0 0 40px 0;
+  font-size: 1em;
 
-  font-size: .85em;
+  nav {
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 
   h2 {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    z-index: 10;
   }
 
   @include bp-medium {
@@ -26,6 +34,19 @@
   @include bp-large {
     margin: 0 0 80px 0;
   }
+
+  // &:after {
+  //   content: '';
+  //   display: block;
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   width: 60px;
+  //   background-image: linear-gradient( to right, rgba(0,0,0,0), rgba(0,0,0,.7));
+  //   z-index: 10;
+  //   pointer-events: none;
+  // }
 
   .nav--share {
     float: right;
@@ -63,25 +84,19 @@
 
 
 .post--featured_item {
-  display: block;
+  display: inline-block;
 
   position: relative;
-  z-index: 1;
 
-  float: left;
-  width: 50%;
+  width: 80%;
 
-  position: relative;
   height: 0;
-  padding-top: 50%;
+  padding-top: 53%;
   overflow: hidden;
 
-  &:first-of-type {
-    clear: left;
-    float: none;
-    width: 100%;
-    padding-top: 50%;
-  }
+  vertical-align: bottom;
+
+  white-space: normal;
 
   picture, img {
     display: block;
@@ -97,19 +112,29 @@
   h3 {
     margin: 0;
     position: absolute;
-    bottom: 2.25em;
-    left: 5px;
+    bottom: 15px;
+    left: 20px;
     z-index: 5;
 
-    max-width: 80%;
+    max-width: 75%;
+
+    font-size: .95em;
 
     span {
-      position: relative;
       background: #fff;
       color: $sch-black;
-      padding: .08em 0;
+      padding: 5px 0;
       line-height: 1.1em;
-      box-shadow: 5px 0 0 #fff, -5px 0 0 #fff;
+      box-shadow: 10px 0 0 #fff, -10px 0 0 #fff;
+      color: #fff;
+
+      &:after {
+        content: attr(title);
+        color: $sch-black;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
     }
 
     @include bp-large {
@@ -130,23 +155,5 @@
     .post--meta_date {
 
     }
-  }
-
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    box-shadow: rgba(0, 0, 0, 0.8) 0 0 100px inset;
-  }
-
-  &:hover:after {
-    box-shadow: none;
-    background: $sch-blue;
-    opacity: .8;
   }
 }

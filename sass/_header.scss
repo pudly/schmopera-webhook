@@ -1,3 +1,13 @@
+/*
+
+  POST FEATURED
+
+*/
+
+/* -----------------------------------------------------
+    page--header
+    global primary header component
+----------------------------------------------------- */
 .page--header {
   z-index: 20;
 }
@@ -23,6 +33,10 @@
 }
 
 .site-branding {
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
   @include bp-medium {
     display: block;
     width: 50%;
@@ -65,7 +79,7 @@
     background: url(/static/images/logo.svg) no-repeat;
     background-size: auto 100%;
     position: relative;
-    margin-left: 50px;
+    margin-left: 60px;
   }
 }
 
@@ -133,7 +147,7 @@
 
 @media only screen and (max-width: 40em) {
   .content--main {
-    padding-top: 80px !important;
+    padding-top: 60px !important;
   }
 
   .page--header {
@@ -148,12 +162,18 @@
 
     background: #fff;
 
-    padding: 20px;
+    padding: 10px;
 
     .nav--jump {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 0;
+      left: 0;
+
+      .nav--icon {
+        width: 60px;
+        height: 60px;
+        line-height: 58px;
+      }
     }
 
     .site-branding {

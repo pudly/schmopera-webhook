@@ -40,6 +40,14 @@
 
   p {
     margin: 0;
+
+    span {
+      display: none;
+
+      @include bp-medium {
+        display: inline;
+      }
+    }
   }
 
   @include bp-medium {
@@ -84,7 +92,15 @@
     text-decoration: none;
     font-size: .8em;
     color: #fff;
-    margin-right: 1em;
+    margin-right: .5em;
+
+    span {
+      display: none;
+
+      @include bp-medium {
+        display: inline;
+      }
+    }
   }
 
   @include bp-medium {
