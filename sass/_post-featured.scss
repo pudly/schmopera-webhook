@@ -18,6 +18,7 @@
     overflow: hidden;
     overflow-x: auto;
     white-space: nowrap;
+    // transform: translateZ(0);
   }
 
   h2 {
@@ -109,31 +110,33 @@
     top: 0;
   }
 
-  h3 {
-    margin: 0;
+  header {
     position: absolute;
     bottom: 15px;
     left: 20px;
     z-index: 5;
-
     max-width: 75%;
-
-    font-size: .95em;
-
-    span {
-      background: #fff;
-      color: $sch-black;
-      padding: 5px 0;
-      line-height: 1.1em;
-      box-shadow: 10px 0 0 #fff, -10px 0 0 #fff;
-      color: #fff;
-
-      &:after {
-        content: attr(title);
+    
+    h3 {
+      position: relative;
+      margin: 0;  
+      font-size: .95em;
+  
+      span {
+        background: #fff;
         color: $sch-black;
-        position: absolute;
-        left: 0;
-        top: 0;
+        padding: 5px 0;
+        line-height: 1.1em;
+        box-shadow: 10px 0 0 #fff, -10px 0 0 #fff;
+        color: #fff;
+  
+        &:after {
+          content: attr(title);
+          color: $sch-black;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
       }
     }
 
@@ -144,16 +147,26 @@
 
       max-width: 65%;
     }
-  }
 
-  .post--meta {
-    top: auto;
-    bottom: 0;
-    z-index: 5;
-    font-size: .9em;
+    .post--meta-category {
+      position: absolute;
+      display: block;
 
-    .post--meta_date {
+      background: $sch-blue;
+      color: #fff;
 
+      height: 26px;
+      top: -33px;
+      left: -10px;
+      padding: 0 7px;
+
+      text-transform: uppercase;
+      line-height: 26px;      
+      font-size: 14px;
+      font-style: normal;
     }
+      
   }
+
+
 }

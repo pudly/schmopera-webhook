@@ -24,6 +24,14 @@
     <nav>
     {% for item in featured %}
       <a href="{{ url(item) }}" class="post--featured_item">
+        <header>
+          <h3><span title="{{ item.name }}">{{ item.name }}</span></h3>
+          
+          {% if item.category|size !== 0 %}
+          <em class="post--meta-category">{{ item.category.name }}</em>
+          {% endif %}          
+        </header>
+
         {% set srcset = item.primary_image|imageCrop(540, 360) + " 1x, " + item.primary_image|imageCrop(1080, 720) + " 2x" %}
         <picture>
           <!-- <source srcset="{{ srcset }}" media="(min-width: 40em)"> -->
@@ -34,8 +42,6 @@
             data-srcset="{{ srcset }}" alt="{{ item.name }}"
             >
         </picture>
-
-        <h3><span title="{{ item.name }}">{{ item.name }}</span></h3>
 
         <!-- <span class="post--meta">
           {% if item.publish_date %}
