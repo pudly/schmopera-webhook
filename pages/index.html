@@ -15,11 +15,13 @@
 {% set featured = merge(cms.featured.home_articles, cms.featured.home_videos) %}
 
   <section class="post--featured">
-    <!-- <nav class="nav--share">
+    {# 
+      <nav class="nav--share">
       <h3>Find us on</h3>
       <a href="https://www.facebook.com/schmopera" class="social--facebook pill"><i class="icon-facebook"></i></a>
       <a href="https://www.twitter.com/schmopera" class="social--twitter pill"><i class="icon-twitter"></i></a>
-    </nav> -->
+    </nav>
+    #}
     <h2 class="pill">Featured</h2>
     <nav>
     {% for item in featured %}
@@ -34,7 +36,9 @@
 
         {% set srcset = item.primary_image|imageCrop(540, 360) + " 1x, " + item.primary_image|imageCrop(1080, 720) + " 2x" %}
         <picture>
-          <!-- <source srcset="{{ srcset }}" media="(min-width: 40em)"> -->
+          {#
+          <source srcset="{{ srcset }}" media="(min-width: 40em)">
+          #}
           <img
             class="lazyload"
             src="{{ item.primary_image|imageCrop(54, 36) }}"
@@ -43,7 +47,8 @@
             >
         </picture>
 
-        <!-- <span class="post--meta">
+        {# 
+          <span class="post--meta">
           {% if item.publish_date %}
             <em class="post--meta_date">{{ item.publish_date|date('F d, Y') }}</em>
           {% endif %}
@@ -51,7 +56,8 @@
           {% if item.youtube_url %}
             <em class="post--meta-type meta-type_video">Video</em>
           {% endif %}
-        </span> -->
+          </span>
+        #}
       </a>
     {% endfor %}
     </nav>
@@ -66,7 +72,9 @@
         <a href="{{ url(item)|replace('&', '&amp;', 'g') }}" class="post--list-image">
           {% set srcset = item.primary_image|imageCrop(680, 480) + " 480w, " +  item.primary_image|imageCrop(1360, 960) + " 2x" %}
           <picture>
-            <!-- <source srcset="{{ srcset }}" media="(min-width: 40em)"> -->
+            {# 
+              <source srcset="{{ srcset }}" media="(min-width: 40em)">
+            #}
             <img
               class="lazyload"
               src="{{ item.primary_image|imageCrop(40, 30) }}"
