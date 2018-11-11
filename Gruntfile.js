@@ -43,12 +43,19 @@ module.exports = function(grunt) {
        files: ['sass/**/*.scss'],
        tasks: ['sass', 'build']
      }
+   },
+
+   multicore: {
+    "wh-multicore": {
+      tasks: ['sass', 'build']
+    }
    }
   });
 
   // THIS LOADS THE TASKS WE NEED ABOVE IN FROM OUR NPM
   // Note, that we need to have these installed through the package.json file as well
-  grunt.loadNpmTasks('grunt-contrib-sass');    
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-multicore');  
     
   // NEVER REMOVE THESE LINES, OR ELSE YOUR PROJECT MAY NOT WORK
   require('./options/generatorOptions.js')(grunt);

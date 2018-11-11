@@ -54,7 +54,7 @@
   {% if item.related_articles|size !== 0 || item.related_videos|size !== 0 %}
   {% set relitems = merge(item.related_articles, item.related_videos) %}
   {% set relitems = relitems|sort('publish_date', true) %}
-  {% set relitems = paginate(relitems, 10) %}
+  {# set relitems = paginate(relitems, 10) #}
 
   <section class="scene--single_related">
     <h2 class="pill">Contributions</h2>
@@ -71,6 +71,7 @@
           <h1>{{ relation.name }}</h1>
           <h2>{{ relation.last_updated|date('F d Y') }}</h2>
 
+        {#
           <p class="post--list-desc">{{ relation.short_description }}</p>
 
           {% if relation.youtube_url %}
@@ -78,6 +79,8 @@
           {% else %}
             <span class="btn post--button">Read More</span>
           {% endif %}
+
+        #}
         </a>
       </li>
       {% endfor %}

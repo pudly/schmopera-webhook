@@ -19,6 +19,7 @@ var spawn = require('win-spawn');
 var md5 = require('MD5');
 var $ = require('cheerio');
 var exec = require('child_process').exec;
+var fileCount = 0;
 
 require('colors');
 
@@ -314,6 +315,9 @@ module.exports.generator = function (config, options, logger, fileParser) {
     params = params || {};
     params['firebase_conf'] = config.get('webhook');
     var originalOutFile = outFile;
+
+    fileCount++;
+    // logger.ok('Total files: ' + fileCount);
 
     // Merge functions in
     params = utils.extend(params, swigFunctions.getFunctions());
@@ -674,11 +678,13 @@ module.exports.generator = function (config, options, logger, fileParser) {
         }
 
         logger.ok('Finished Rendering Pages\n');
-
+        logger.ok('Total files: ' + fileCount);
         if(cb) cb(done);
       });
 
     });
+
+
   };
 
   var generatedSlugs = {};
@@ -718,7 +724,9 @@ module.exports.generator = function (config, options, logger, fileParser) {
       glob('templates/**/*.html', function(err, files) {
 
         files.forEach(function(file) {
+
           // We ignore partials, special directory to allow making of partial includes
+
           if(path.extname(file) === '.html' && file.indexOf('templates/partials') !== 0)
           {
             if(path.dirname(file).split('/').length <= 1) {
@@ -734,6 +742,8 @@ module.exports.generator = function (config, options, logger, fileParser) {
             var info = typeInfo[objectName];
             var filePath = path.dirname(file);
             var overrideFile = null;
+
+            logger.ok('Rendering ' + objectName);
 
             if(!items) {
               logger.error('Missing data for content type ' + objectName);
@@ -845,6 +855,8 @@ module.exports.generator = function (config, options, logger, fileParser) {
                 } else {
                   writeTemplate(file, newPath, { item: val });
                 }
+
+                
               }
 
               for(var key in items)
@@ -912,6 +924,8 @@ module.exports.generator = function (config, options, logger, fileParser) {
 
       });
     });
+
+    // logger.ok('Total files: ' + fileCount);
   };
 
   /**

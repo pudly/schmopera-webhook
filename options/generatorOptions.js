@@ -143,4 +143,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-usemin');
+  grunt.loadNpmTasks('grunt-multicore');
 };
